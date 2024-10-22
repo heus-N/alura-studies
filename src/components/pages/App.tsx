@@ -17,11 +17,27 @@ function App() {
     })))
   }
 
+  function finishTask(){
+    if(selected){
+      setSelected(undefined);
+      setTasks(prevTask => prevTask.map(task => {
+        if(task.id === selected.id){
+          return{
+            ...task,
+            selecionado: false,
+            completado: true
+          }
+        }
+        return task
+      }))
+    }
+  }
+
   return (
     <div className={style.AppStyle}>
       <Formulario setTasks={setTasks} />
       <List tasks={tasks} isSelected={isSelected}/>
-      <Timer selected={selected} />
+      <Timer selected={selected} finishTask={finishTask} />
     </div>
   );
 }
