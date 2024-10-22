@@ -21,7 +21,7 @@ function App() {
     <div className={style.AppStyle}>
       <Formulario setTasks={setTasks} />
       <List tasks={tasks} isSelected={isSelected}/>
-      <Timer />
+      <Timer selected={selected} />
     </div>
   );
 }
