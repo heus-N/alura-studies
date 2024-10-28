@@ -2,12 +2,13 @@ import { ITask } from '../../../types/tasks'
 import style from './Item.module.scss'
 
 interface Props extends ITask{
-  isSelected: (selectedTask: ITask) => void
+  isSelected: (selectedTask: ITask) => void,
+  start: boolean
 }
 
-export default function Item({tarefa, tempo, selecionado, completado, id, isSelected}: Props){
+export default function Item({tarefa, tempo, selecionado, completado, id, isSelected, start}: Props){
   return(
-    <li className={`${style.item} ${selecionado ? style.itemSelecionado : ''} ${completado ? style.itemCompletado : ''}`} 
+    <li className={`${start === true ? style.itemStart : ''} ${style.item} ${selecionado ? style.itemSelecionado : ''} ${completado ? style.itemCompletado : ''}`} 
       onClick={() => !completado && isSelected({
         tarefa,
         tempo,

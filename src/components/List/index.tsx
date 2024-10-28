@@ -5,9 +5,10 @@ import { ITask } from '../../types/tasks';
 interface Props {
   tasks: ITask[],
   isSelected: (selectedTask: ITask) => void
+  start: boolean
 }
 
-function List({tasks, isSelected}: Props) {
+function List({tasks, isSelected, start}: Props) {
 
   return(
     <aside className={style.listaTarefas}>
@@ -15,6 +16,7 @@ function List({tasks, isSelected}: Props) {
       <ul>
         {tasks?.map((task) => (
           <Item 
+            start={start}
             isSelected={isSelected}
             key={task.id}
             {...task}

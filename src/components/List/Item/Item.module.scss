@@ -26,6 +26,12 @@
   box-shadow: 2px 4px 4px #0000009F inset;
 }
 
+.itemStart {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .itemCompletado {
   background-color: #566F42;
   cursor: auto;

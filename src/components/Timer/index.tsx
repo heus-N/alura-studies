@@ -8,9 +8,10 @@ import { useEffect, useState } from "react";
 interface Props{
   selected: ITask | undefined,
   finishTask: () => void
+  setStart: (value: boolean) => void
 }
 
-export default function Timer({selected, finishTask}: Props){
+export default function Timer({selected, finishTask, setStart}: Props){
   const [time, setTime] = useState<number>();
 
   useEffect(() => {
@@ -20,6 +21,7 @@ export default function Timer({selected, finishTask}: Props){
   }, [selected])
 
   function countdown(counter: number = 0){
+    setStart(true)
     setTimeout(() => {
       if(counter > 0){
         setTime(counter - 1)
@@ -28,7 +30,6 @@ export default function Timer({selected, finishTask}: Props){
       finishTask();
     }, 1000)
   }
-  
   return (
     <div className={style.cronometro}>
       <p className={style.titulo}>

@@ -8,6 +8,7 @@ import { ITask } from '../../types/tasks';
 function App() {
   const [tasks, setTasks] = useState<ITask[]>([])
   const [selected, setSelected] = useState<ITask>()
+  const [start, setStart] = useState<boolean>(false)
   
   function isSelected(selectedTask: ITask){
     setSelected(selectedTask)
@@ -30,14 +31,17 @@ function App() {
         }
         return task
       }))
+      setStart(false)
     }
   }
+
+  console.log(start)
 
   return (
     <div className={style.AppStyle}>
       <Formulario setTasks={setTasks} />
-      <List tasks={tasks} isSelected={isSelected}/>
-      <Timer selected={selected} finishTask={finishTask} />
+      <List tasks={tasks} isSelected={isSelected} start={start}/>
+      <Timer selected={selected} finishTask={finishTask} setStart={setStart}/>
     </div>
   );
 }
