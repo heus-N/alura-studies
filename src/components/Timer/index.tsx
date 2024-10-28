@@ -21,7 +21,9 @@ export default function Timer({selected, finishTask, setStart}: Props){
   }, [selected])
 
   function countdown(counter: number = 0){
-    setStart(true)
+    if(selected){
+      setStart(true)
+    }
     setTimeout(() => {
       if(counter > 0){
         setTime(counter - 1)
